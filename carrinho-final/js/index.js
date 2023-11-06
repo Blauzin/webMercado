@@ -1,13 +1,6 @@
+let previewContainer;
 
-function trocarPag1(){
-    window.location.href = "novoProduto.html";
-}
-function trocarPag2(){
-    window.location.href = "removerProduto.html";
-}
-
-
-
+//função para atualizar o valor total da compra
 async function atualizarTotal(){
     busca = await fetch('php/valorTotal.php');
         total = await busca.json();
@@ -23,36 +16,45 @@ async function atualizarTotal(){
         };
 }
 
-window.onload = atualizarTotal();
+//usei listener pq window.onload estava dando erros
+window.addEventListener('load', function() {
+    atualizarTotal();
+    carregarDadosDosCards();
+  });
 
-// carregar dados dos cards
-window.onload = async function (){
-        var resultado = await fetch ("php/getProdutos.php",{
+async function carregarDadosDosCards() {
+    var resultado = await fetch("php/getProdutos.php", {
         method: "GET"
-
     });
-
 
     var conteudo = await resultado.json();
 
-    //criar cards
-    function cardsCriar (conteudo){
-        for(var i = 0; i < conteudo.length; i++) {
-            var html =
-            `<div class="card">
-                <div class="card-titulo">${conteudo[i].nome}</div>
-                <div class="card-genero">${conteudo[i].preco}</div>
-                <div class="card-acao" onclick="adicionarCarrinho(${conteudo[i].id})"> COMPRAR </div>
-        
-            </div>`
-        document.getElementById("produtos").innerHTML += html; 
-        //colocar os cards dentro da div c id produtos
-        
-        };
-
-    };
-
     cardsCriar(conteudo);
+        
+};
+
+//criar cards
+function cardsCriar (conteudo){
+
+    for(var i = 0; i < conteudo.length; i++) {
+
+        var html =
+        `<div class="produto" data-name="p-${conteudo[i].id}">
+        <img src="imagens/${conteudo[i].id}.png">
+        <div class="info">
+            <div class="nomePreco">
+                <h3>${conteudo[i].nome}</h3>
+                <div class="preco">R$${conteudo[i].preco}</div>
+            </div>
+            <div class="botao">
+                <a class="botaoCarrinho" onclick="adicionarCarrinho(${conteudo[i].id})">Carrinho</a>
+            </div>
+        </div>
+    </div>`;
+    document.getElementById("produtos-container").innerHTML += html; 
+    //colocar os cards dentro da div c id produtos
+    
+    };
 
 };
 
@@ -69,22 +71,6 @@ async function adicionarCarrinho(id){
         await atualizarTotal();
 };
 
-
-//função para adicionar novos produtos
-function addProduto(){
-
-    var form =  document.getElementById('formProduto');
-    var arquivo = document.getElementById('arquivo').files; //imagem
-    var dados = new FormData(form);
-    dados.append('arquivo', arquivo[0]);
-  
-    fetch("php/novoProduto.php", {
-      method: "POST",
-      body: dados
-    });
-  
-  
-}
 
 async function limparCarrinho(){
     await fetch("php/limparCarrinho.php",{
