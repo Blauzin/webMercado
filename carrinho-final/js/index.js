@@ -57,12 +57,6 @@ window.onload = async function (){
 };
 
 
-
-
-
-
-
-
 async function adicionarCarrinho(id){
         var dados = new FormData();
         dados.append("id_produto", id);
@@ -76,13 +70,13 @@ async function adicionarCarrinho(id){
 };
 
 
-
 //função para adicionar novos produtos
 function addProduto(){
 
     var form =  document.getElementById('formProduto');
+    var arquivo = document.getElementById('arquivo').files; //imagem
     var dados = new FormData(form);
-  
+    dados.append('arquivo', arquivo[0]);
   
     fetch("php/novoProduto.php", {
       method: "POST",
@@ -91,7 +85,6 @@ function addProduto(){
   
   
 }
-
 
 async function limparCarrinho(){
     await fetch("php/limparCarrinho.php",{
