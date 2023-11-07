@@ -1,12 +1,18 @@
 function cardsRemove (conteudo){
   for(var i = 0; i < conteudo.length; i++) {
       var html =
-      `<div class="card">
-          <div class="card-titulo">${conteudo[i].nome}</div>
-          <div class="card-genero">${conteudo[i].preco}</div>
-          <div class="card-acao" onclick="produtoRemover(${conteudo[i].id})"> Remover </div>
-  
-      </div>`
+      `<div class="produto" data-name="p-${conteudo[i].id}">
+        <img src="imagens/${conteudo[i].id}.png">
+        <div class="info">
+            <div class="nomePreco">
+                <h3>${conteudo[i].nome}</h3>
+                <div class="preco">R$${conteudo[i].preco}</div>
+            </div>
+            <div class="botao">
+                <a class="botaoRemove" onclick="adicionarCarrinho(${conteudo[i].id})">Remover</a>
+            </div>
+        </div>
+    </div>`;
   document.getElementById("produtosRemove").innerHTML += html; 
   //colocar os cards dentro da div c id produtos
   

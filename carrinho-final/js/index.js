@@ -47,7 +47,7 @@ function cardsCriar (conteudo){
                 <div class="preco">R$${conteudo[i].preco}</div>
             </div>
             <div class="botao">
-                <a class="botaoCarrinho" onclick="adicionarCarrinho(${conteudo[i].id})">Carrinho</a>
+                <a class="botaoCarrinho" onclick="adicionarCarrinho(${conteudo[i].id})">Adicionar ao Carrinho</a>
             </div>
         </div>
     </div>`;
