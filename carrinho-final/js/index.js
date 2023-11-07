@@ -1,24 +1,9 @@
 let previewContainer;
 
-//função para atualizar o valor total da compra
-async function atualizarTotal(){
-    busca = await fetch('php/valorTotal.php');
-        total = await busca.json();
-    
-        if (total.error) {
-                console.error(total.error);
-        } else {
-            if (total.total == null){
-                document.getElementById('total').textContent = 'Valor Total: 0';
-            }else{
-                document.getElementById('total').textContent = 'Valor Total: ' + total.total;               
-            }
-        };
-}
+
 
 //usei listener pq window.onload estava dando erros
 window.addEventListener('load', function() {
-    atualizarTotal();
     carregarDadosDosCards();
   });
 
@@ -68,14 +53,18 @@ async function adicionarCarrinho(id){
             body: dados
         });
 
-        await atualizarTotal();
+       
 };
 
 
-async function limparCarrinho(){
-    await fetch("php/limparCarrinho.php",{
-        method: "POST"
-    });
+function clickMenu(){
 
-    await atualizarTotal();
-};
+    if (itens.style.display =='block') {
+      itens.style.display = 'none'
+    } else{
+      itens.style.display = 'block'
+    }
+
+}
+
+

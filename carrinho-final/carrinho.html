@@ -7,11 +7,18 @@
     <script src="js/carrinho.js" defer></script>
 </head>
 <body>
-    <h2>Seu Carrinho</h2>
-    <div id="itemsCarrinho">
-   
-    </div>
-    <p id="carrinhoVazio" style="display: none;">Seu carrinho está vazio.</p>
-    <button id="finalizarCompra" style="display: none;">Finalizar Compra</button>
+    <p class="seuCarrinho">Seu Carrinho</p>
+    <div id="itemsCarrinho"></div>
+    <span id="total" class="total"></span>
+    <button class="button" onclick="limparCarrinho()">Limpar Carrinho</button>
+    <a href="pix.html">
+      <button class="button">Pagar com PIX</button>
+  </a>
+  <a href="cartao.html">
+      <button class="button">Pagar com Cartão</button>
+  </a>
+  <a href="index.html">
+      <button class="button">Voltar ao inicio</button>
+  </a>
 </body>
 </html>

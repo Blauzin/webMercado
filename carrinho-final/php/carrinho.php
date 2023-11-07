@@ -4,7 +4,8 @@
 
   $conexao = criarConexao();
 
-  $query = "SELECT produtos.nome, produtos.preco FROM carrinho 
+
+  $query = "SELECT produtos.id, produtos.nome, produtos.preco FROM carrinho 
             INNER JOIN produtos ON carrinho.produto_id = produtos.id";
 
   $resultado = mysqli_query($conexao, $query);

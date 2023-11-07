@@ -2,8 +2,16 @@
   --card-blue: #0e141b;
   --background: #202b3b;
   --accent-green: #a1cd44;
-  --blue-button:#4b619b;
+  --blue-cool:#4b619b;
   --font-white: #f3f3f3;
+  --header: #212b45;
+  --search-bar: #1d263d;
+  --red-accent: #a7473c;
+}
+
+body{
+  background-color: var(--background);
+  color: var(--font-white);
 }
 
 .input-form {
@@ -25,7 +33,7 @@
   position: absolute;
   top: 401px;
   left: 620px;
-  color: rgb(8, 38, 75);
+  color: --;
   display: flex;
 }
 
@@ -36,18 +44,19 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
-  border: solid 1px rgb(8, 38, 75);
+  border: solid 1px var(--blue-cool);
+  background-color: var(--background);
   border-radius: 3px;
 }
 
 .form-datas{
   width: 75px;
   padding: 10px;
-  border: solid 1px #ccc;
+  border: solid 1px var(--blue-cool);
   border-radius: 3px;
-  color: rgb(8, 38, 75);
-  background-color: white;
-  outline-color: rgb(0, 115, 255, 0.184);
+  color: var(--font-white);
+  background-color: var(--card-blue);
+  outline-color: var(--blue-cool);
   font-style: arial;
   margin-bottom: 2px;
 }
@@ -59,18 +68,16 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
-  border: solid 1px rgb(8, 38, 75);
+  border: solid 1px var(--blue-cool);
   border-radius: 3px;
 }
 
 .button{
   width: 300px;
   padding: 10px;
-  border: solid 1px #ccc;
   border-radius: 7px;
-  color: #0072bb;
-  background-color: rgb(0, 115, 255, 0.184);
-  outline-color: rgb(0, 115, 255, 0.184);
+  color:var(--font-white);
+  background-color:var(--blue-cool);
   font-style: arial;
   margin-bottom: 1px;
 }

@@ -7,15 +7,31 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <script src="js/index.js" defer></script>
+        <script src="js/barra.js" defer></script>
     </head>
     <body>
+        <div class="cabecalho">
+            <form class="barra" role="search" id="pesquisa" name="pesquisa">
+            <input class="barra de pesquisa" type="search" placeholder="pesquisar" aria-label="Pesquisar" 
+            name="pesquisa" id="barraDePesquisa"></form>
+            <i class= "material-symbols-outlined" onclick="clickMenu()">menu</i>
+            <menu id ="itens"class="menu">
+                <ul>
+                    <br>
+                    <a  href="carrinho.html">🛒</a>
+                    <br>
+                    <a href="adm.html">ADM</a>
+                </ul>
+                
+                
+            </menu>
+
+        </div>
         <div class="container">
+
+
             <div class="produtos-container" id="produtos-container"></div>
         </div>
-        <a href="novoProduto.html"  class="botaoAddProduto">Adicionar produto</a>
-        <a href="removerProduto.html" class="botaoRemoveProduto">Remover produto</a>
-        <button onclick="limparCarrinho()">Limpar Carrinho</button>
-        <span id="total"></span>
 
     </body>
 </html>

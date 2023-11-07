@@ -152,6 +152,45 @@ body{
    padding-bottom: 1rem;
 }
 
+.cabecalho{
+   font-size: 2rem;
+   text-align: center;
+   color: var(--font-white);
+   background-color: var(--header);
+   border-radius: 5px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   display: flex;
+}
+
+.barra {
+   font-size: 2rem;
+   text-align: center;
+   color: var(--blue-cool);
+   background-color: var(--search-bar);
+   border-radius: 5px;
+   margin-left: 150px;
+   margin-top: 15px;
+   margin-bottom: 15px;
+   
+}
+
+.cabecalho .material-symbols-outlined{
+   display: block;
+   max-width: 200px;
+   margin-left: 270px;
+   margin-top: 20px;
+   cursor: pointer;
+   color: #444;
+  
+   
+}
+
+.menu{
+   display: none;
+   
+}
+
 
 @media (max-width:991px){
 

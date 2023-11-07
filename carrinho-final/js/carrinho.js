@@ -1,46 +1,54 @@
-window.onload = carregarCarinho();
+window.addEventListener('load', function() {
+  carregarCarinho();
+  atualizarTotal();
+});
 
 async function carregarCarinho() {
     var resultado = await fetch("php/carrinho.php",{
       method: "GET"
     });
-    var conteudo = await resultado.json
+    var conteudo =  await resultado.json();
+    
+    if (conteudo.length > 0) {
+      criaritems(conteudo);
+    } else {
+      alert("Carrinho Vazio");
+    }
+    
   }
- 
-  if (conteudo.length > 0) {
-      renderCartItems(conteudo);
-  } else {
-      document.getElementById('emptyCartMessage').style.display = 'block';
-  }
 
+function criaritems(conteudoCarrinho) {
+  for(var i = 0; i < conteudoCarrinho.length; i++) {
 
-function renderCartItems(cartItems) {
-  for(var i = 0; i < conteudo.length; i++) {
+  var html = 
+           `<div class="item-carrinho"
+           <h3>${conteudoCarrinho[i].nome}</h3>
+            <p>R$${conteudoCarrinho[i].preco}</p>`
 
-    var html = `
-            <h3>${item.name}</h3>
-            <p class="quantity">Quantidade: ${item.quantity}</p>
-            <p>R$${(item.price * item.quantity).toFixed(2)}</p>
-            <span class="remove-item" onclick="removeItemFromCart(${item.id})">&times;</span>
-        `;
-
+  document.getElementById("itemsCarrinho").innerHTML += html; 
   };
 
-  document.getElementById('checkoutButton').style.display = 'block';
 }
-
-function removeItemFromCart(id) {
-
-  var dados = new FormData();
-  dados.append("id_produto", id)
-
-  resposta = fetch("php/removerProduto.php",{
-  method: "POST",
-  body: dados
+async function limparCarrinho(){
+  await fetch("php/limparCarrinho.php",{
+      method: "POST"
   });
+
 };
-  if (cartItemsContainer.children.length === 0) {
-      document.getElementById('emptyCartMessage').style.display = 'block';
-      document.getElementById('checkoutButton').style.display = 'none';
-  }
+
+//função para atualizar o valor total da compra
+async function atualizarTotal(){
+  busca = await fetch('php/valorTotal.php');
+      total = await busca.json();
+  
+      if (total.error) {
+              console.error(total.error);
+      } else {
+          if (total.total == null){
+              document.getElementById('total').textContent = 'Valor Total: 0';
+          }else{
+              document.getElementById('total').textContent = 'Valor Total: ' + total.total;               
+          }
+      };
+}
 
